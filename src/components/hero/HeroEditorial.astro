@@ -1,6 +1,7 @@
 ---
 import site from "../../data/site";
-const { hero, primaryCta, businessName } = site;
+const { hero, primaryCta, secondaryCta, businessName } = site;
+const hasBadges = hero.badges && hero.badges.length > 0;
 ---
 
 <section class="bg-surface">
@@ -13,12 +14,26 @@ const { hero, primaryCta, businessName } = site;
         </h1>
       </div>
       <div class="md:col-span-5 md:pl-8">
-        <p class="text-pretty border-l border-line pl-6 text-base italic text-muted md:text-lg">
+        <p class="text-pretty border-l border-accent pl-6 text-base italic text-muted md:text-lg">
           {hero.sub}
         </p>
-        <a href={primaryCta.href} class="btn-primary mt-8">{primaryCta.label}</a>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>
+          {secondaryCta && <a href={secondaryCta.href} class="btn-ghost">{secondaryCta.label}</a>}
+        </div>
       </div>
     </div>
+
+    {hasBadges && (
+      <ul class="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-6 text-sm uppercase tracking-[0.16em] text-muted">
+        {hero.badges!.map((b) => (
+          <li class="flex items-center gap-2">
+            <span class="inline-block h-1 w-1 rounded-full bg-accent"></span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    )}
 
     {hero.imageUrl && (
       <figure class="mt-16">

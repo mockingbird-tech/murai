@@ -13,7 +13,7 @@ const site: Site = {
     eyebrow: "Há 42 anos, em São Paulo",
     headline: "Reinventar a experiência dentista.",
     sub: "Tecnologia, equipe própria e a clareza que você não esperava encontrar em uma clínica odontológica.",
-    imageUrl: "https://murai.com.br/wp-content/themes/murai/images/paulo-murai.png",
+    imageUrl: undefined,
     badges: ["42 anos", "Odontologia digital", "Equipe própria", "São Paulo, SP"],
   },
   navLinks: [
@@ -88,7 +88,7 @@ const site: Site = {
     tiktok: null,
   },
   logo: {
-    src: "https://murai.com.br/wp-content/themes/murai/images/logo-murai-top-2.jpg",
+    src: undefined,
     alt: "Murai Odontologia",
   },
   favicons: [
