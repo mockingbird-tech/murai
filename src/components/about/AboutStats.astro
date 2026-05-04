@@ -1,0 +1,38 @@
+---
+import site from "../../data/site";
+const { about } = site;
+const stats = about.stats ?? [];
+---
+
+<section id="about" class="bg-ink py-20 text-surface md:py-28">
+  <div class="container-page">
+    <div class="grid gap-12 md:grid-cols-12 md:items-end">
+      <div class="md:col-span-7">
+        {about.eyebrow && (
+          <span class="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            {about.eyebrow}
+          </span>
+        )}
+        {about.title && (
+          <h2 class="mt-4 text-balance font-heading text-3xl font-semibold md:text-5xl">{about.title}</h2>
+        )}
+      </div>
+      <div class="md:col-span-5 md:pl-4">
+        <div class="space-y-4 text-pretty text-base text-surface/75 md:text-lg">
+          {about.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </div>
+
+    {stats.length > 0 && (
+      <dl class="mt-14 grid gap-px overflow-hidden rounded-card border border-surface/15 bg-surface/15 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((s) => (
+          <div class="flex flex-col justify-between gap-4 bg-ink p-8">
+            <dt class="font-heading text-5xl font-semibold leading-none md:text-6xl">{s.value}</dt>
+            <dd class="text-sm uppercase tracking-[0.18em] text-surface/65">{s.label}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</section>

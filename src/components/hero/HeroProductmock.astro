@@ -1,0 +1,46 @@
+---
+import site from "../../data/site";
+const { hero, primaryCta, secondaryCta, businessName } = site;
+---
+
+<section class="relative overflow-hidden bg-soft">
+  <div class="container-page grid gap-12 py-16 md:grid-cols-12 md:items-center md:py-24">
+    <div class="md:col-span-6">
+      {hero.eyebrow && <span class="eyebrow mb-4 block">{hero.eyebrow}</span>}
+      <h1 class="font-heading text-balance text-4xl font-semibold leading-[1.05] md:text-6xl">
+        {hero.headline}
+      </h1>
+      <p class="mt-6 max-w-xl text-pretty text-lg text-muted md:text-xl">{hero.sub}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>
+        {secondaryCta && <a href={secondaryCta.href} class="btn-ghost">{secondaryCta.label}</a>}
+      </div>
+    </div>
+
+    <div class="relative md:col-span-6">
+      <div class="relative mx-auto w-full max-w-md">
+        <div class="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/30 to-accent/30 blur-2xl"></div>
+        <div class="overflow-hidden rounded-[1.75rem] border border-line bg-surface shadow-2xl shadow-ink/10">
+          <div class="flex items-center gap-1.5 border-b border-line bg-soft/60 px-4 py-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-ink/15"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-ink/15"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-ink/15"></span>
+            <span class="ml-3 truncate text-xs text-muted">{site.domain}</span>
+          </div>
+          {hero.imageUrl ? (
+            <img src={hero.imageUrl} alt={businessName} class="aspect-[4/3] w-full object-cover" />
+          ) : (
+            <div class="flex aspect-[4/3] flex-col justify-end bg-gradient-to-br from-primary/40 via-soft to-accent/40 p-6">
+              <span class="font-heading text-2xl font-semibold text-ink">{businessName}</span>
+              <span class="mt-1 text-sm text-ink/70">{hero.eyebrow ?? site.tagline}</span>
+            </div>
+          )}
+          <div class="flex items-center justify-between border-t border-line px-4 py-3 text-xs text-muted">
+            <span>{site.copy.contactUs}</span>
+            <span class="rounded-full bg-primary px-3 py-1 text-primary-fg">{primaryCta.label}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

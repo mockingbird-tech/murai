@@ -1,0 +1,31 @@
+---
+import site from "../../data/site";
+const { features } = site;
+---
+
+<section id="features" class="bg-soft py-20 md:py-28">
+  <div class="container-page">
+    <div class="grid gap-12 md:grid-cols-12">
+      <header class="md:col-span-4">
+        {features.eyebrow && <span class="eyebrow mb-4 block">{features.eyebrow}</span>}
+        {features.title && (
+          <h2 class="font-heading text-3xl font-semibold leading-[1.05] md:text-5xl">{features.title}</h2>
+        )}
+        {features.intro && <p class="mt-4 text-base text-muted md:text-lg">{features.intro}</p>}
+      </header>
+      <ol class="md:col-span-8">
+        {features.items.map((f, i) => (
+          <li class="grid grid-cols-[auto_1fr] gap-6 border-t border-line py-7 first:border-t-0 first:pt-0">
+            <span class="font-heading text-3xl font-semibold tabular-nums text-primary md:text-5xl">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3 class="font-heading text-xl font-semibold md:text-2xl">{f.title}</h3>
+              <p class="mt-2 text-pretty text-muted">{f.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

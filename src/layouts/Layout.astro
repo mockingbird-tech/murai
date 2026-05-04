@@ -1,0 +1,63 @@
+---
+import site from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const title = Astro.props.title ?? `${site.businessName} · ${site.tagline}`;
+const description = Astro.props.description ?? site.metaDescription ?? site.tagline;
+
+const p = site.palette;
+const t = site.typography;
+const headingStack = `"${t.headingFamily}", ui-sans-serif, system-ui, sans-serif`;
+const bodyStack = `"${t.bodyFamily}", ui-sans-serif, system-ui, sans-serif`;
+
+const cssVars = [
+  `--c-surface:${p.surface}`,
+  `--c-ink:${p.ink}`,
+  `--c-muted:${p.muted}`,
+  `--c-primary:${p.primary}`,
+  `--c-primary-fg:${p.primaryFg}`,
+  `--c-accent:${p.accent}`,
+  `--c-soft:${p.soft}`,
+  p.line ? `--c-line:${p.line}` : null,
+  `--f-heading:${headingStack}`,
+  `--f-body:${bodyStack}`,
+].filter(Boolean).join(";");
+---
+
+<!doctype html>
+<html lang={site.lang} style={cssVars}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={p.primary} />
+
+    {site.favicons.map((f) => (
+      <link rel={f.rel} href={f.href} type={f.type} sizes={f.sizes} />
+    ))}
+
+    {t.googleFontsHref && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href={t.googleFontsHref} />
+      </>
+    )}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-surface text-ink">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

@@ -1,0 +1,31 @@
+---
+import site from "../../data/site";
+const { businessName, navLinks, primaryCta, contact, logo } = site;
+---
+
+<header class="bg-ink text-surface">
+  <div class="container-page flex h-12 items-center justify-between text-xs text-surface/70">
+    <span>{contact.address ?? ""}</span>
+    <span class="hidden gap-4 sm:flex">
+      {contact.phone && <a href={`tel:${contact.phone.replace(/\s+/g, "")}`} class="hover:text-surface">{contact.phone}</a>}
+      {contact.email && <a href={`mailto:${contact.email}`} class="hover:text-surface">{contact.email}</a>}
+    </span>
+  </div>
+  <div class="bg-surface text-ink">
+    <div class="container-page flex h-20 items-center justify-between">
+      <a href="#" class="flex items-center gap-3 font-heading text-xl font-semibold">
+        {logo?.src ? <img src={logo.src} alt={logo.alt} class="h-10 w-auto" /> : null}
+        <span>{businessName}</span>
+      </a>
+      <nav class="hidden items-center gap-8 text-sm font-medium text-ink/80 md:flex">
+        {navLinks.map((l) => <a href={l.href} class="hover:text-primary">{l.label}</a>)}
+      </nav>
+      <a
+        href={primaryCta.href}
+        class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-fg hover:opacity-90 md:inline-flex"
+      >
+        {primaryCta.label}
+      </a>
+    </div>
+  </div>
+</header>

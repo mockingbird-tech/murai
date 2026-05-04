@@ -1,0 +1,37 @@
+---
+import site from "../../data/site";
+const { contact, primaryCta, copy } = site;
+const cards: { label: string; value: string; href: string | null; tone: string }[] = [];
+if (contact.whatsappHref) cards.push({ label: "WhatsApp", value: contact.whatsappLabel ?? contact.phone ?? primaryCta.label, href: contact.whatsappHref, tone: "bg-primary text-primary-fg" });
+if (contact.phone) cards.push({ label: "Telefone", value: contact.phone, href: `tel:${contact.phone.replace(/\s+/g, "")}`, tone: "bg-soft text-ink" });
+if (contact.email) cards.push({ label: "E-mail", value: contact.email, href: `mailto:${contact.email}`, tone: "bg-accent/15 text-ink" });
+if (contact.address) cards.push({ label: "Endereço", value: contact.address, href: contact.mapsUrl ?? null, tone: "bg-ink text-surface" });
+---
+
+<section id="contact" class="bg-surface py-20 md:py-28">
+  <div class="container-page">
+    <div class="max-w-2xl">
+      <span class="eyebrow mb-4 block">{copy.sectionContact}</span>
+      <h2 class="text-balance font-heading text-3xl font-semibold md:text-5xl">Como falar com a gente.</h2>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {cards.map((c) => {
+        const Tag = c.href ? "a" : "div";
+        return (
+          <Tag
+            {...(c.href ? { href: c.href } : {})}
+            class={`block rounded-card p-6 transition ${c.tone} ${c.href ? "hover:opacity-90" : ""}`}
+          >
+            <span class="text-xs font-semibold uppercase tracking-[0.18em] opacity-80">{c.label}</span>
+            <p class="mt-3 font-heading text-lg font-semibold leading-snug break-all">{c.value}</p>
+          </Tag>
+        );
+      })}
+    </div>
+
+    {contact.hours && (
+      <p class="mt-6 text-sm text-muted">{contact.hours}</p>
+    )}
+  </div>
+</section>

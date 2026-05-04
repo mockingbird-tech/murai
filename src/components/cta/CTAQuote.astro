@@ -1,0 +1,17 @@
+---
+import site from "../../data/site";
+const { ctaSection, primaryCta, businessName } = site;
+---
+
+<section class="bg-surface py-20 md:py-28">
+  <div class="container-narrow text-center">
+    <span class="font-heading text-6xl leading-none text-accent">"</span>
+    {ctaSection.eyebrow && <span class="eyebrow mb-2 block">{ctaSection.eyebrow}</span>}
+    <h2 class="mx-auto max-w-2xl text-balance font-heading text-3xl font-semibold leading-tight md:text-5xl">
+      {ctaSection.headline}
+    </h2>
+    {ctaSection.sub && <p class="mx-auto mt-4 max-w-xl text-base text-muted md:text-lg">{ctaSection.sub}</p>}
+    <p class="mt-6 text-sm uppercase tracking-[0.18em] text-muted">{businessName}</p>
+    <a href={primaryCta.href} class="btn-primary mt-10">{primaryCta.label}</a>
+  </div>
+</section>

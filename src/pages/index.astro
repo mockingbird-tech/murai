@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import site from "../data/site";
+import {
+  navVariants,
+  heroVariants,
+  featuresVariants,
+  aboutVariants,
+  ctaVariants,
+  contactVariants,
+  footerVariants,
+} from "../components/registry";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+
+const Nav = navVariants[site.variants.nav];
+const Hero = heroVariants[site.variants.hero];
+const Features = featuresVariants[site.variants.features];
+const About = aboutVariants[site.variants.about];
+const CTA = ctaVariants[site.variants.cta];
+const Contact = contactVariants[site.variants.contact];
+const Footer = footerVariants[site.variants.footer];
+---
+
+<Layout>
+  <Nav />
+  <main>
+    <Hero />
+    <Features />
+    <About />
+    <CTA />
+    <Contact />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

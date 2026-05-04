@@ -1,0 +1,37 @@
+---
+import site from "../../data/site";
+const { features } = site;
+const items = features.items.slice(0, 5);
+const tones = ["bg-primary text-primary-fg", "bg-soft", "bg-soft", "bg-accent/20", "bg-ink text-surface"];
+const spans = [
+  "md:col-span-3 md:row-span-2",
+  "md:col-span-2",
+  "md:col-span-2",
+  "md:col-span-3",
+  "md:col-span-2",
+];
+---
+
+<section id="features" class="bg-surface py-20 md:py-28">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      {features.eyebrow && <span class="eyebrow mb-4 block">{features.eyebrow}</span>}
+      {features.title && (
+        <h2 class="text-balance font-heading text-3xl font-semibold md:text-5xl">{features.title}</h2>
+      )}
+      {features.intro && <p class="mt-4 text-lg text-muted">{features.intro}</p>}
+    </div>
+
+    <div class="mt-12 grid gap-4 md:auto-rows-[180px] md:grid-cols-5">
+      {items.map((f, i) => (
+        <div class={`flex flex-col justify-between rounded-card p-6 ${tones[i] ?? "bg-soft"} ${spans[i] ?? ""}`}>
+          <span class="font-heading text-3xl font-semibold opacity-80">{f.icon ?? `0${i + 1}`}</span>
+          <div>
+            <h3 class="font-heading text-lg font-semibold md:text-xl">{f.title}</h3>
+            <p class="mt-1 text-sm opacity-85">{f.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+import site from "../../data/site";
+const { hero, primaryCta, secondaryCta, businessName } = site;
+const bg = hero.backgroundUrl ?? hero.imageUrl;
+---
+
+<section class="relative isolate min-h-[680px] overflow-hidden text-surface md:min-h-[760px]">
+  <div class="absolute inset-0 -z-10">
+    {bg ? (
+      <img src={bg} alt={businessName} class="h-full w-full object-cover" />
+    ) : (
+      <div class="h-full w-full bg-gradient-to-br from-primary via-ink to-accent"></div>
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/45 to-ink/10"></div>
+  </div>
+  <div class="container-page flex min-h-[680px] flex-col justify-end gap-8 py-16 md:min-h-[760px] md:py-24">
+    {hero.eyebrow && (
+      <span class="inline-flex w-fit rounded-full border border-surface/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-surface/85">
+        {hero.eyebrow}
+      </span>
+    )}
+    <h1 class="max-w-4xl text-balance font-heading text-5xl font-semibold leading-[1.05] md:text-7xl">
+      {hero.headline}
+    </h1>
+    <p class="max-w-2xl text-pretty text-lg text-surface/80 md:text-xl">
+      {hero.sub}
+    </p>
+    <div class="flex flex-wrap items-center gap-3">
+      <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>
+      {secondaryCta && (
+        <a
+          href={secondaryCta.href}
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-surface/40 bg-surface/10 px-6 py-3 text-base font-medium text-surface backdrop-blur hover:bg-surface/20"
+        >
+          {secondaryCta.label}
+        </a>
+      )}
+    </div>
+  </div>
+</section>

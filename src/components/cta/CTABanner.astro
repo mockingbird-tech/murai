@@ -1,0 +1,36 @@
+---
+import site from "../../data/site";
+const { ctaSection, primaryCta, secondaryCta } = site;
+---
+
+<section class="bg-primary text-primary-fg">
+  <div class="container-page grid gap-8 py-16 md:grid-cols-12 md:items-center md:py-20">
+    <div class="md:col-span-8">
+      {ctaSection.eyebrow && (
+        <span class="inline-block text-xs font-semibold uppercase tracking-[0.18em] opacity-80">
+          {ctaSection.eyebrow}
+        </span>
+      )}
+      <h2 class="mt-3 text-balance font-heading text-3xl font-semibold md:text-5xl">
+        {ctaSection.headline}
+      </h2>
+      {ctaSection.sub && <p class="mt-3 max-w-xl text-base opacity-85 md:text-lg">{ctaSection.sub}</p>}
+    </div>
+    <div class="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
+      <a
+        href={primaryCta.href}
+        class="inline-flex items-center justify-center rounded-full bg-surface px-6 py-3 text-base font-medium text-ink hover:opacity-90"
+      >
+        {primaryCta.label}
+      </a>
+      {secondaryCta && (
+        <a
+          href={secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-surface/40 bg-primary-fg/0 px-6 py-3 text-base font-medium text-primary-fg hover:border-surface"
+        >
+          {secondaryCta.label}
+        </a>
+      )}
+    </div>
+  </div>
+</section>

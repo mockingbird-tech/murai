@@ -1,0 +1,28 @@
+---
+import site from "../../data/site";
+const { features } = site;
+---
+
+<section id="features" class="bg-surface py-20 md:py-28">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      {features.eyebrow && <span class="eyebrow mb-4 block">{features.eyebrow}</span>}
+      {features.title && (
+        <h2 class="text-balance font-heading text-3xl font-semibold md:text-5xl">{features.title}</h2>
+      )}
+      {features.intro && <p class="mt-4 text-lg text-muted">{features.intro}</p>}
+    </div>
+
+    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {features.items.map((f) => (
+        <li class="group rounded-card border border-line bg-soft/40 p-6 transition hover:-translate-y-0.5 hover:border-primary/40 hover:bg-surface">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-heading text-primary">
+            {f.icon ?? "✦"}
+          </div>
+          <h3 class="mt-5 font-heading text-xl font-semibold">{f.title}</h3>
+          <p class="mt-2 text-pretty text-muted">{f.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

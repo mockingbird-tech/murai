@@ -1,0 +1,28 @@
+---
+import site from "../../data/site";
+const { businessName, navLinks, logo } = site;
+const half = Math.ceil(navLinks.length / 2);
+const left = navLinks.slice(0, half);
+const right = navLinks.slice(half);
+---
+
+<header class="border-b border-line/60 bg-surface">
+  <div class="container-page grid h-20 grid-cols-3 items-center">
+    <nav class="hidden gap-6 text-sm text-muted md:flex">
+      {left.map((l) => <a href={l.href} class="hover:text-ink">{l.label}</a>)}
+    </nav>
+    <a href="#" class="flex flex-col items-center gap-0.5 text-center font-heading">
+      {logo?.src ? (
+        <img src={logo.src} alt={logo.alt} class="h-9 w-auto" />
+      ) : (
+        <>
+          <span class="text-base font-semibold tracking-wide">{businessName}</span>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-muted">est.</span>
+        </>
+      )}
+    </a>
+    <nav class="hidden justify-end gap-6 text-sm text-muted md:flex">
+      {right.map((l) => <a href={l.href} class="hover:text-ink">{l.label}</a>)}
+    </nav>
+  </div>
+</header>

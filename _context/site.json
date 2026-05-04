@@ -1,0 +1,43 @@
+{
+  "domain": "murai.com.br",
+  "business_name": "murai.com.br",
+  "tagline": "Murai Odontologia is a digital dentistry clinic with 42 years of experience, focused on reinventing the patient experience in dental care. They invest in techno",
+  "hero_headline": "murai.com.br",
+  "primary_cta": {
+    "label": "Falar no WhatsApp",
+    "href": "https://wa.me/5511914680031"
+  },
+  "colors": {
+    "primary": "#208F37",
+    "accent": "#007BFF",
+    "background": "#FFFFFF",
+    "text": "#007BFF",
+    "inferred": false,
+    "source": "firecrawl branding format"
+  },
+  "fonts": {
+    "heading": "Roboto",
+    "body": "Roboto"
+  },
+  "logo_url": null,
+  "hero_image_url": null,
+  "contact": {
+    "phone": "5511914680031",
+    "email": null,
+    "whatsapp": "+5511914680031",
+    "whatsapp_url": "https://wa.me/5511914680031",
+    "address": null,
+    "maps_url": null,
+    "hours": null
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/murai_odontologia/",
+    "facebook": null,
+    "linkedin": null,
+    "twitter": null,
+    "youtube": "https://www.youtube.com/watch?v=_Lua-kG-r8g",
+    "tiktok": null
+  },
+  "language": "pt-BR",
+  "scraped_at": "2026-05-04T18:48:55.079Z"
+}

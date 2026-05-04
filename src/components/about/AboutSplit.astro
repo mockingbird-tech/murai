@@ -1,0 +1,39 @@
+---
+import site from "../../data/site";
+const { about, businessName } = site;
+---
+
+<section id="about" class="bg-surface py-20 md:py-28">
+  <div class="container-page grid gap-12 md:grid-cols-12 md:items-start">
+    <div class="md:col-span-5">
+      <div class="aspect-[4/5] overflow-hidden rounded-card bg-gradient-to-br from-soft via-surface to-soft">
+        {about.imageUrl ? (
+          <img src={about.imageUrl} alt={businessName} class="h-full w-full object-cover" />
+        ) : (
+          <div class="flex h-full items-end p-6">
+            <span class="font-heading text-4xl font-semibold text-ink/80">{businessName}</span>
+          </div>
+        )}
+      </div>
+    </div>
+    <div class="md:col-span-7 md:pl-4">
+      {about.eyebrow && <span class="eyebrow mb-4 block">{about.eyebrow}</span>}
+      {about.title && (
+        <h2 class="text-balance font-heading text-3xl font-semibold md:text-5xl">{about.title}</h2>
+      )}
+      <div class="mt-6 space-y-4 text-pretty text-base text-muted md:text-lg">
+        {about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+      {about.stats && about.stats.length > 0 && (
+        <dl class="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
+          {about.stats.map((s) => (
+            <div>
+              <dt class="font-heading text-3xl font-semibold text-ink md:text-4xl">{s.value}</dt>
+              <dd class="mt-1 text-sm text-muted">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </div>
+  </div>
+</section>

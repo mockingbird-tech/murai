@@ -1,0 +1,27 @@
+---
+import site from "../../data/site";
+const { contact, primaryCta, copy } = site;
+---
+
+<section id="contact" class="bg-surface py-20 md:py-28">
+  <div class="container-narrow text-center">
+    <span class="eyebrow mb-4 block">{copy.sectionContact}</span>
+    <h2 class="text-balance font-heading text-3xl font-semibold md:text-5xl">
+      Estamos no WhatsApp.
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-base text-muted md:text-lg">
+      {site.ctaSection.sub ?? "Mande uma mensagem e a gente responde no mesmo dia."}
+    </p>
+
+    <a href={primaryCta.href} class="btn-primary mt-10 text-base">
+      {primaryCta.label}
+    </a>
+
+    <ul class="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm text-muted">
+      {contact.phone && <li><a href={`tel:${contact.phone.replace(/\s+/g, "")}`} class="hover:text-ink">{contact.phone}</a></li>}
+      {contact.email && <li><a href={`mailto:${contact.email}`} class="hover:text-ink">{contact.email}</a></li>}
+      {contact.address && <li>{contact.address}</li>}
+      {contact.hours && <li>{contact.hours}</li>}
+    </ul>
+  </div>
+</section>

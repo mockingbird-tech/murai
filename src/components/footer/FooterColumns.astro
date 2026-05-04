@@ -1,0 +1,48 @@
+---
+import site from "../../data/site";
+const { businessName, contact, social, navLinks, copy } = site;
+const year = new Date().getFullYear();
+const socialEntries = Object.entries(social).filter(([, v]) => Boolean(v)) as [string, string][];
+---
+
+<footer class="border-t border-line bg-soft pt-16 pb-8">
+  <div class="container-page grid gap-10 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <p class="font-heading text-xl font-semibold">{businessName}</p>
+      <p class="mt-3 max-w-sm text-sm text-muted">{site.tagline}</p>
+      {socialEntries.length > 0 && (
+        <ul class="mt-6 flex flex-wrap gap-3">
+          {socialEntries.map(([k, v]) => (
+            <li>
+              <a href={v} class="inline-flex items-center rounded-full border border-line bg-surface px-3 py-1.5 text-xs uppercase tracking-wider text-muted hover:border-primary/40 hover:text-ink">
+                {k}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div class="md:col-span-3">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{copy.sectionAbout}</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        {navLinks.map((l) => <li><a href={l.href} class="text-ink hover:text-primary">{l.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div class="md:col-span-4">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{copy.sectionContact}</p>
+      <ul class="mt-4 space-y-2 text-sm text-ink">
+        {contact.whatsappHref && <li><a href={contact.whatsappHref} class="hover:text-primary">{contact.whatsappLabel ?? "WhatsApp"}</a></li>}
+        {contact.phone && <li><a href={`tel:${contact.phone.replace(/\s+/g, "")}`} class="hover:text-primary">{contact.phone}</a></li>}
+        {contact.email && <li><a href={`mailto:${contact.email}`} class="hover:text-primary">{contact.email}</a></li>}
+        {contact.address && <li class="text-muted">{contact.address}</li>}
+        {contact.hours && <li class="text-muted">{contact.hours}</li>}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container-page mt-12 border-t border-line pt-6 text-xs text-muted">
+    © {year} {businessName}. Todos os direitos reservados.
+  </div>
+</footer>

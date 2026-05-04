@@ -1,0 +1,24 @@
+---
+import site from "../../data/site";
+const { businessName, navLinks, primaryCta, logo } = site;
+---
+
+<header class="sticky top-0 z-40 border-b border-line/60 bg-surface/85 backdrop-blur">
+  <div class="container-page flex h-16 items-center justify-between">
+    <a href="#" class="flex items-center gap-3 font-heading text-lg font-semibold">
+      {logo?.src ? <img src={logo.src} alt={logo.alt} class="h-8 w-auto" /> : null}
+      <span>{businessName}</span>
+    </a>
+    <nav class="hidden items-center gap-8 text-sm text-muted md:flex">
+      {navLinks.map((l) => (
+        <a href={l.href} class="hover:text-ink transition">{l.label}</a>
+      ))}
+    </nav>
+    <a
+      href={primaryCta.href}
+      class="hidden rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-fg hover:opacity-90 md:inline-flex"
+    >
+      {primaryCta.label}
+    </a>
+  </div>
+</header>

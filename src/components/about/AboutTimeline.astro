@@ -1,0 +1,34 @@
+---
+import site from "../../data/site";
+const { about } = site;
+const timeline = about.timeline ?? [];
+---
+
+<section id="about" class="bg-soft py-20 md:py-28">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      {about.eyebrow && <span class="eyebrow mb-4 block">{about.eyebrow}</span>}
+      {about.title && (
+        <h2 class="text-balance font-heading text-3xl font-semibold md:text-5xl">{about.title}</h2>
+      )}
+      <div class="mt-6 space-y-4 text-pretty text-base text-muted md:text-lg">
+        {about.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    {timeline.length > 0 && (
+      <ol class="mt-14 grid gap-6 md:grid-cols-4">
+        {timeline.map((t, i) => (
+          <li class="relative rounded-card border border-line bg-surface p-6">
+            <span class="font-heading text-sm uppercase tracking-[0.18em] text-accent">{t.year}</span>
+            <h3 class="mt-3 font-heading text-lg font-semibold">{t.title}</h3>
+            <p class="mt-2 text-sm text-muted">{t.body}</p>
+            {i < timeline.length - 1 && (
+              <span class="absolute -right-3 top-1/2 hidden h-px w-6 bg-line md:block"></span>
+            )}
+          </li>
+        ))}
+      </ol>
+    )}
+  </div>
+</section>
